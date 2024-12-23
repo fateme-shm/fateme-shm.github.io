@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--
+      If you are serving your web app in a path other than the root, change the
+      href value below to reflect the base path you are serving from.
+
+      The path provided below has to start and end with a slash "/" in order for
+      it to work correctly.
+
+      For more details:
+      * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+      This is a placeholder for base href that will be replaced by the value of
+      the `--base-href` argument provided to `flutter build`.
+    -->
+  <base href="/">
+  <meta content="#0F53D9" name="theme-color">
+  <script>
+    function setStatusBarColor(color) {
+      let metaThemeColor = document.querySelector('meta[name="theme-color"]');
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute('content', color);
+      } else {
+        metaThemeColor = document.createElement('meta');
+        metaThemeColor.name = 'theme-color';
+        metaThemeColor.content = color;
+        document.head.appendChild(metaThemeColor);
+      }
+    }
+
+    setStatusBarColor('#0F53D9');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta content="A new Flutter project." name="description">
+
+  <!-- iOS meta tags & icons -->
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="ایرانیکارت" name="apple-mobile-web-app-title">
+  <link href="icons/Icon-192.png" rel="apple-touch-icon">
+
+  <!-- Favicon -->
+  <link href="favicon.png" rel="icon" type="image/png" />
+
+  <title>ایرانیکارت</title>
+  <link href="manifest.json" rel="manifest">
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    const serviceWorkerVersion = "$FLUTTER_SERVICE_WORKER_VERSION";
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script defer src="flutter.js"></script>
+
+  <!-- webEngage PWA -->
+  <script id='_webengage_script_tag' type='text/javascript'>
+    var webengage;
+    console.log("WebEngage script is starting..."); // Log start of script
+
+    !function (w, e, b, n, g) {
+      function o(e, t) {
+        e[t[t.length - 1]] = function () {
+          r.__queue.push([t.join("."), arguments]);
+          console.log("WebEngage function queued:", t.join("."), arguments); // Log function queueing
+        }
+      }
+      var i, s, r = w[b],
+        z = " ",
+        l = "init options track screen onReady".split(z),
+        a = "feedback survey notification".split(z),
+        c = "options render clear abort".split(z),
+        p = "Open Close Submit Complete View Click".split(z),
+        u = "identify login logout setAttribute".split(z);
+
+      if (!r || !r.__v) {
+        console.log("Initializing WebEngage SDK..."); // Log initialization start
+
+        w[b] = r = {
+          __queue: [],
+          is_spa: 1, // Change this to 0 if you do not wish to use default SPA behaviour of WebEngage SDK
+          __v: "6.0",
+          user: {}
+        };
+
+        for (i = 0; i < l.length; i++) o(r, [l[i]]);
+        for (i = 0; i < a.length; i++) {
+          for (r[a[i]] = {}, s = 0; s < c.length; s++) o(r[a[i]], [a[i], c[s]]);
+          for (s = 0; s < p.length; s++) o(r[a[i]], [a[i], "on" + p[s]]);
+        }
+        for (i = 0; i < u.length; i++) o(r.user, ["user", u[i]]);
+
+        setTimeout(function () {
+          console.log("Loading WebEngage external script..."); // Log script loading
+          var f = e.createElement("script"),
+            d = e.getElementById("_webengage_script_tag");
+          f.type = "text/javascript";
+          f.async = !0;
+          f.src = ("https:" == e.location.protocol ? "https://ssl.widgets.webengage.com" : "https://cdn.widgets.webengage.com") + "/js/webengage-min-v-6.0.js";
+          f.onload = function () {
+            console.log("WebEngage external script loaded successfully."); // Log successful load
+          };
+          f.onerror = function () {
+            console.error("Failed to load WebEngage external script."); // Log error
+          };
+          d.parentNode.insertBefore(f, d);
+        }, 0);
+      }
+    }(window, document, "webengage");
+
+    console.log("Initializing WebEngage with provided code..."); // Log init call
+    webengage.init('~10a5cb41c');
+    console.log("WebEngage initialized successfully."); // Log successful init
+  </script>
+
+
+  <style>
+    @font-face {
+      font-family: 'Estedad';
+      src: url('fonts/Estedad-Medium.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+
+    body {
+      margin: 0;
+      font-family: 'Estedad';
+      background-color: #fff;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .unsupported-message {
+      width: 100%;
+      font-family: 'Estedad';
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .container {
+      text-align: center;
+      width: 90%;
+      max-width: 75%;
+      margin: 0 auto;
+    }
+
+    .header-text {
+      font-size: 48px;
+      font-family: 'Estedad';
+      margin-bottom: 20px;
+      color: #000;
+    }
+
+    .logo-container {
+      background-color: #dadada;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .logo {
+      width: 55%;
+      margin-bottom: 20px;
+    }
+
+    .sub-text {
+      font-size: 36px;
+      margin-top: 0;
+      margin-bottom: 16;
+      font-family: 'Estedad';
+      direction: rtl;
+      color: #000;
+    }
+
+    .instruction_text {
+      font-size: 32px;
+      margin-top: 0;
+      margin-bottom: 16;
+      font-family: 'Estedad';
+      direction: rtl;
+      color: #000;
+    }
+
+    .animate {
+      transition-property: transform 0.5s ease-in;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!--Splash => show splash mode-->
+  <div class="unsupported-message animate" dir="rtl" id="splash-screen"
+    style="display: block; width: 100%; text-align: center; background-color: #fff;">
+    <!-- <span class="header-text" style="margin: 20px;">در حال دریافت اطلاعات ...</span> -->
+    <embed pluginspage="http://www.adobe.com/svg/viewer/install/" src="icons/icsearchlogo.svg" style="width: 40%"
+      type="image/svg+xml" />
+  </div>
+
+  <!-- desktop => show unsuportted mode -->
+  <div class="unsupported-message" id="unsupported-desktop-message"
+    style="display: none; width: 60%; text-align: center;">
+    <div class="container">
+      <div class="header-text" style="font-size: 24px">اپلیکیشن ایرانیکارتiOS نصب نسخه</div>
+      <div class="logo-container">
+        <embed height="auto%" pluginspage="http://www.adobe.com/svg/viewer/install/" src="icons/icsearchlogo.svg"
+          style="width: 50% " type="image/svg+xml" />
+        <p class="sub-text" style="margin: 20px; font-size: 24px;">جهت نصب نسخه وب اپلیکیشن ایرانیکارت
+          با
+          تلفن همراه
+          خود وارد شوید</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- android => show available markets -->
+  <div class="unsupported-message" id="unsupported-android-message" style="display: none; width: 100%;">
+    <div class="container">
+      <div class="header-text">نصب نسخه اندروید اپلیکیشن ایرانیکارت</div>
+      <div class="logo-container" style="margin: 20px;">
+        <embed pluginspage="http://www.adobe.com/svg/viewer/install/" src="icons/icsearchlogo.svg" style="width: 60%"
+          type="image/svg+xml" />
+        <p class="sub-text" style="margin: 50px;"> جهت نصب اپلیکیشن ایرانیکارت برای اندروید از طریق
+          یکی از مارکت های موجود
+          اقدام کنید</p>
+        <div>
+          <a href="https://play.google.com/store/apps/details?id=com.iranicard.app">
+            <img alt="Google Play Logo" class="logo" src="icons/google-play.png">
+          </a>
+        </div>
+        <div>
+          <a href="https://myket.ir/app/com.iranicard.app">
+            <img alt="Mayket Logo" class="logo" src="icons/myket.png">
+          </a>
+        </div>
+        <div>
+          <a href="https://cafebazaar.ir/app/com.iranicard.app">
+            <img alt="Bazaar Logo" class="logo" src="icons/bazaar.png">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ios but not safari => show use safari -->
+  <div class="unsupported-message" id="unsupported-non-safari-message"
+    style="display: none; width: 100%; text-align: center;">
+    <div class="container">
+      <div class="header-text">اپلیکیشن ایرانیکارت iOS نصب نسخه</div>
+      <div class="logo-container">
+        <embed height="auto%" pluginspage="http://www.adobe.com/svg/viewer/install/" src="icons/icsearchlogo.svg"
+          style="width: 60% " type="image/svg+xml" />
+        <p class="sub-text" style="margin: 20px;">جهت نصب نسخه IOS ایرانیکارت با مرورگر سافاری وارد
+          شوید</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ios and safari => show add to Home instruction -->
+  <div class="unsupported-message" dir="rtl" id="supported-safari-message" style="display: none;">
+    <div class="container">
+      <div class="header-text">نصب نسخه IOS اپلیکیشن ایرانیکارت</div>
+      <div class="logo-container">
+        <embed height="auto%" pluginspage="http://www.adobe.com/svg/viewer/install/" src="icons/icsearchlogo.svg"
+          style="width: 30% " type="image/svg+xml" />
+        <div class="instruction_text" style="text-align:start">
+          <p>۱- در نوار پایین گوشی دکمه <span style="font-size: 48px;">&#x2191;</span> را کلیک
+            کنید.</p>
+          <p>۲- منوی باز شده را به بالا اسکرول کنید و دکمه <strong>Add to Home Screen</strong>
+            را
+            کلیک کنید.</p>
+          <p>۳- در آخر در بالای صفحه دکمه <strong>Add</strong> را کلیک کنید.</p>
+          <p>۴- در صورتی که سیستم عامل شما iOS است، از مرورگر Safari استفاده کنید.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    window.addEventListener('load', function (ev) {
+      const isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+        navigator.userAgent &&
+        navigator.userAgent.indexOf('CriOS') == -1 &&
+        navigator.userAgent.indexOf('FxiOS') == -1;
+
+      const isIos = (
+        ["iPad Simulator", "iPhone Simulator", "iPod Simulator", "iPad", "iPhone", "iPod"].includes(
+          navigator.platform,
+        ) ||
+        (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+      );
+
+      const isAndroid = /android/i.test(navigator.userAgent);
+
+
+      const isPwaInstalled = window.navigator.standalone == true || // iOS PWA Standalone
+        document.referrer.includes('android-app://') || // Android Trusted Web App
+        ["fullscreen", "standalone", "minimal-ui"].some(
+          (displayMode) => window.matchMedia('(display-mode: ' + displayMode + ')').matches
+        ) // Chrome PWA (supporting fullscreen, standalone, minimal-ui)
+
+
+      showPlatformSpecificMessages(true, true, true, true);
+    });
+
+
+    function showPlatformSpecificMessages(isIos, isSafari, isAndroid, isPwaInstalled) {
+      //add loading screen
+      document.getElementById('splash-screen').style.display = 'block';
+
+      if (isIos && isSafari) {
+        if (isPwaInstalled) {
+          // Download main.dart.js
+          _flutter.loader.loadEntrypoint({
+            serviceWorker: {
+              serviceWorkerVersion: serviceWorkerVersion,
+            },
+            onEntrypointLoaded: function (engineInitializer) {
+              engineInitializer.initializeEngine().then(function (appRunner) {
+                // Remove splash
+                setTimeout(() => document.getElementById('splash-screen').style.display = 'none', 400);
+                appRunner.runApp();
+              });
+            }
+          });
+        } else {
+          // Remove splash
+          document.getElementById('splash-screen').style.display = 'none';
+          document.getElementById('supported-safari-message').style.display = 'block';
+        }
+      } else if (isIos && !isSafari) {
+        // Remove splash
+        document.getElementById('splash-screen').style.display = 'none';
+        document.getElementById('unsupported-non-safari-message').style.display = 'block';
+      } else if (isAndroid) {
+        // Remove splash
+        document.getElementById('splash-screen').style.display = 'none';
+        document.getElementById('unsupported-android-message').style.display = 'block';
+      } else {
+        // Remove splash
+        document.getElementById('splash-screen').style.display = 'none';
+        document.getElementById('unsupported-desktop-message').style.display = 'block';
+      }
+    }
+
+  </script>
+</body>
+
+</html>
